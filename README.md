@@ -6,4 +6,6 @@ Just a React + Socket.IO multi room chat app.
 
 \ ゜o゜)ノ
 
-WTFPL / Public Domain
+WTFPL / Public Domain 2019
+
+<img alt="Copyleft" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Copyleft.svg" width="15" height="15">
