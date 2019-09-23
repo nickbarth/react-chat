@@ -5,7 +5,7 @@ const ChatMessage = ({ message }) => (
   <span className="message">{ message }</span>
 );
 
-const Chat = ({ socket }) => {
+const Chat = ({ socket, name }) => {
   const chatRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -31,7 +31,7 @@ const Chat = ({ socket }) => {
   // emit new message
   const handleSubmit = (event) => {
     event.preventDefault();
-    const message = { id: uuid(), message: `You: ${input}` };
+    const message = { id: uuid(), message: `${name}: ${input}` };
     setMessages([...messages, message]);
     socket.emit('SEND_MESSAGE', input);
     setInput("");

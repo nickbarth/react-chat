@@ -1,6 +1,6 @@
 import React, { Fragment, useRef, useState, useEffect } from 'react';
-
 import SocketContext from './socket-context'
+
 import Chrome from './Chrome';
 import Rooms from './Rooms';
 import Chat from './Chat';
@@ -26,11 +26,11 @@ const Router = ({ socket }) => {
 
   return <Chrome>
     <SocketContext.Consumer>
-    {({ socket }) => (
+    {(context) => (
       {
-        'LOGIN': <Login socket={socket} />,
-        'ROOMS': <Rooms socket={socket} />,
-        'CHAT':  <Chat socket={socket} />,
+        'LOGIN': <Login {...context} />,
+        'ROOMS': <Rooms {...context} />,
+        'CHAT':  <Chat {...context} />,
         '':  <h1>Loading...</h1>
       }[page]
     )}
