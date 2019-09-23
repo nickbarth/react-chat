@@ -4,9 +4,7 @@ Just a React + Socket.IO multi room chat app.
 
 ![Demo](https://github.com/nickbarth/react-chat/blob/master/demo.gif?raw=true)
 
-[https://react-chat.glitch.me/](https://react-chat.glitch.me/)
-
-\ ゜o゜)ノ
+\ ゜o゜)ノ [https://react-chat.glitch.me/](https://react-chat.glitch.me/)
 
 WTFPL / Public Domain 2019
 
