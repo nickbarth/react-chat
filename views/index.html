@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>React Chat</title>
+
+    <style>
+      #messages {
+        display: block;
+        height: 200px;
+        width: 100%;
+        margin: 5px auto;
+        background: #fff;
+        border: 1px solid #000;
+        overflow-y: scroll;
+      }
+
+      .message {
+        display: block;
+        padding: 10px;
+        background: #eee;
+      }
+
+      .message:nth-child(even) {
+        background: #ccc;
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  </head>
+  <body>
+    
+    <div class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6" id="app"></div>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/bundle.js"></script>
+  </body>
+</html>
