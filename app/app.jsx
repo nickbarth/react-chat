@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import * as io from 'socket.io-client';
-
 import SocketContext from './components/socket-context'
 import Router from './components/Router';
+import * as io from 'socket.io-client';
 
 const socket = io();
 socket.connect();
 console.log('CONNECTED');
 
-ReactDOM.render(
-  <SocketContext.Provider value={{ socket: socket }}>
+const App = () => {
+  const setName = (name) => setState({ ...state, name });
+  const initialState = { name: "", socket, setName };
+  const [state, setState] = useState(initialState);
+
+  return <SocketContext.Provider value={ state }>
     <Router socket={ socket } />
-  </SocketContext.Provider>,
-  document.getElementById('app')
-);
+ </SocketContext.Provider>
+};
+
+ReactDOM.render(<App />, document.getElementById('app'));
