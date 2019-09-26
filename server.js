@@ -62,7 +62,7 @@ const joinRoom = (id, player) => {
   updateRoom(id, {players: [...getRoom(id).players, player.id]});
 }
 
-const leaveRoom = (player) => {
+const leaveRoom = (socket, player) => {
   const id = player.room;
 
   if (!id) {
@@ -77,6 +77,7 @@ const leaveRoom = (player) => {
   if (getRoom(id).players.length === 0) {
     state.rooms.byId = state.rooms.byId.filter((index) => index != id);
     delete state.rooms.byHash[id];
+    socket.broadcast.emit('SET_ROOMS', state.rooms.byId.map(id => getRoom(id)));
   }
 }
 
@@ -95,7 +96,7 @@ io.on('connection', function(socket) {
     // leave room
     if (player.room !== "") {
       socket.leave(player.room);
-      leaveRoom(player);
+      leaveRoom(socket, player);
     }
 
     // remove player
@@ -158,7 +159,7 @@ io.on('connection', function(socket) {
       // leave current room
       if (player.room !== "") {
         socket.leave(player.room);
-        leaveRoom(player);
+        leaveRoom(socket, player);
       }
 
       joinRoom(id, player);
@@ -176,7 +177,7 @@ io.on('connection', function(socket) {
     const player = getPlayer(socket.id);
 
     socket.leave(player.room);
-    leaveRoom(player);
+    leaveRoom(socket, player);
     updatePlayer(player.id, { room: '', page: 'ROOMS' });
     socket.emit('SET_PAGE', 'ROOMS');
 
